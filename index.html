@@ -22,12 +22,11 @@
             padding: 14px 20px;
             text-decoration: none;
         }
-        .navbar img{
-            float: left;
-            height: 40px;
-        }
+        
         .navbar p{
             float: right;
+            color: white;
+            padding-right: 14px;
         }
 
         .navbar a:hover {
@@ -41,11 +40,17 @@
         .tab-content.active {
             display: block;
         }
+
+        .logo{
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="navbar">
-        <img src="ECElogo.png" alt="ECE logo"/>
         <a href="#home" class="tab-link" onclick="openTab(event, 'home')">Home</a>
         <a href="#demo" class="tab-link" onclick="openTab(event, 'demo')">Demo</a>
         <a href="#workshop" class="tab-link" onclick="openTab(event, 'workshop')">Workshop</a>
@@ -66,16 +71,17 @@
         <p>presentation slide deck here</p>
 
     </div>
-    <div id="Workshop" class="tab-content">
+    <div id="workshop" class="tab-content">
         <h1>How to recreate</h1>
         <p>Here we will put how to reccreate our project.</p>
         <p>4+ resources here</p>
     </div>
+
     <div id="team" class="tab-content">
         <h1>Our team</h1>
         <p>This is the team page.</p>
     </div>
-
+    <img class="logo" src="ECElogo.png" alt="ECE logo"/>
 
     <script>
         function openTab(evt, tabName) {
