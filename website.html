@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECE 196: Audio to Color Array Conversion</title>
+    <style>
+        #title-container {
+            position: relative;
+            height: 100vh;
+            line-height: 100vh;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            animation: gradientAnimation 1.5s infinite alternate;
+            text-align: center;
+          	margin: 0;
+            padding: 0;
+            border: 0;
+        }
+      
+          #title-container h1{
+            font-size: 7em;
+            font-family: sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+            border: 0;
+          }
+
+        #scrollDown {
+            position: absolute;
+            border: 2px solid white;
+            border-radius: 10px;
+            width:15px;
+            height:45px;
+            padding: 2px 0px;
+            bottom: 3vh;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            animation: scrollAnimation 1s infinite alternate;
+        }
+      
+      #scrollDown #rond{
+        height: 11px;
+        width: 11px;
+        border-radius: 50%;
+        background-color:white;
+        margin: 0 auto;
+        animation: anim1 1.5s infinite;
+      }
+      
+          @keyframes anim1 {
+        0%
+        { 
+            margin-top: 0px;
+            opacity: 0;
+        }
+        100%
+        { 
+            margin-top: 33px;
+            opacity: 1;
+        }
+    }
+
+
+        @keyframes gradientAnimation {
+            0% {
+                background: linear-gradient(135deg, #ffd1ff, #a8e6cf);
+            }
+            16.67% {
+                background: linear-gradient(135deg, #a8e6cf, #dcedc1);
+            }
+            33.34% {
+                background: linear-gradient(135deg, #dcedc1, #ffd3b6);
+            }
+            50% {
+                background: linear-gradient(135deg, #ffd3b6, #ffaaa5);
+            }
+            66.67% {
+                background: linear-gradient(135deg, #ffaaa5, #a8d1ff);
+            }
+            83.34% {
+                background: linear-gradient(135deg, #a8d1ff, #a8e6cf);
+            }
+            100% {
+                background: linear-gradient(135deg, #a8e6cf, #ffd1ff);
+            }
+        }
+
+        #header-container {
+            color: white;
+            font-size: 2.6em;
+            text-align: center;
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 1rem;
+            margin: 0;
+            background-color: #1f2020;
+            color: #F9F6EF;
+        }
+
+        section {
+            color: #F9F6EF;
+            margin: 100px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+      
+        h1, h2 {
+            color: #F9F6EF;
+          
+        }
+      
+     #yeh
+      {
+        border-radius: 25px;
+          position: relative;
+          background: #1f2020;
+          color: #fff;
+      }
+      
+      #yeh:before, #yeh:after {
+        border-radius: 25px;
+        z-index: -1;
+        content: '';
+        position: absolute;
+        width: calc(100% + 6px);
+        height: calc(100% + 6px);
+        top: -3px;
+        left: -3px;
+        background: linear-gradient(45deg, #87CEEB, #87CEEB, #ADD8E6,
+                    #B0E0E6,#00BFFF,#1E90FF,#4682B4,#0000CD,#00008B, #191970);
+        background-size: 300%;
+        animation: shadow 20s ease-in-out infinite;
+      }
+      #yeh:after {
+        filter: blur(10px);
+      }
+      @keyframes shadow { 
+          0% {
+              background-position: 0 0;
+            }
+            5% {
+              background-position: 20% 20%;
+            }
+            10% {
+              background-position: 40% 40%;
+            }
+            20% {
+              background-position: 60% 60%;
+            }
+            30% {
+              background-position: 80% 80%;
+            }
+            40% {
+              background-position: 100% 100%;
+            }
+            50% {
+              background-position: 120% 120%;
+            }
+            60% {
+              background-position: 140% 140%;
+            }
+            70% {
+              background-position: 160% 160%;
+            }
+            80% {
+              background-position: 180% 180%;
+            }
+            90% {
+              background-position: 200% 200%;
+            }
+            100% {
+              background-position: 220%  220%;
+            }
+      }
+    
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        filter: grayscale(20%) brightness(90%);
+    }
+
+    #System_Pic {   
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+
+
+    </style>
+</head>
+<body>
+<section id="title-container">
+    <h1> Tritone</h1>
+    <div id="scrollDown">
+      <div id="rond"></div>
+    </div> 
+</section>
+  
+<header id="header-container">
+    <h1 class="ECE196">ECE 196: Audio To Color Array Conversion</h1>
+    <p class="Names">James Han, Uriberto Lopez, Alexis Pascual</p>
+</header>
+  
+  <section id="yeh">
+    <h2>Problem Definition</h2>
+    <p>Concerts only using auditory information aren’t accessible to the hearing impaired. Relying on an interpreter or feeling the vibrations through the ground becomes impossible for some settings.
+    </p>
+</section>
+
+<section id="yeh">
+    <h2>System Diagram</h2>
+    <p>Our System Diagram begins by receiving audio input from the various microphones throughout the device and
+        sends it to the teensy audio shield. The audio shield process these signals and turns them from analog to digital for
+        the Teensy 3.6 board to process. Here, the signal. </p>
+    <div id="System_Pic">
+        <img src="images/System_Pic.png" alt="Description of the image">
+    </div>
+</section>
+  
+  <section id="yeh">
+    <h2>Hypothesis</h2>
+    <p></p>
+</section>
+  
+    <section id="yeh">
+    <h2>Timeline</h2>
+    <p></p>
+</section>
+  
+  
+    <section id="yeh">
+    <h2>Enclosure</h2>
+    <p></p>
+</section>
+  
+  
+    <section id="yeh">
+    <h2>Final Product</h2>
+    <p></p>
+</section>
+  
+      <section id="yeh">
+    <h2></h2>
+    <p></p>
+</section>
+
+</body>
+</html>
