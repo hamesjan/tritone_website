@@ -1,349 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECE 196: Audio to Color Array Conversion</title>
-    <style>
-        #title-container {
-            position: relative;
-            height: 100vh;
-            line-height: 100vh;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            animation: gradientAnimation 1.5s infinite alternate;
-            text-align: center;
-          	margin: 0;
-            padding: 0;
-            border: 0;
-        }
-      
-          #title-container h1{
-            font-size: 7em;
-            font-family: sans-serif;
-            color: white;
-            margin: 0;
-            padding: 0;
-            border: 0;
-          }
 
-        #scrollDown {
-            position: absolute;
-            border: 2px solid white;
-            border-radius: 10px;
-            width:15px;
-            height:45px;
-            padding: 2px 0px;
-            bottom: 3vh;
-            margin-left: 50%;
-            transform: translateX(-50%);
-            animation: scrollAnimation 1s infinite alternate;
-        }
-      
-      #scrollDown #rond{
-        height: 11px;
-        width: 11px;
-        border-radius: 50%;
-        background-color:white;
-        margin: 0 auto;
-        animation: anim1 1.5s infinite;
-      }
-      
-          @keyframes anim1 {
-        0%
-        { 
-            margin-top: 0px;
-            opacity: 0;
-        }
-        100%
-        { 
-            margin-top: 33px;
-            opacity: 1;
-        }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECE 196: Audio to Color Array Conversion</title>
+  <style>
+    #title-container {
+      position: relative;
+      height: 100vh;
+      line-height: 100vh;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      animation: gradientAnimation 1.5s infinite alternate;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      border: 0;
     }
 
+    #title-container h1 {
+      font-size: 7em;
+      font-family: sans-serif;
+      color: white;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
 
-        @keyframes gradientAnimation {
-            0% {
-                background: linear-gradient(135deg, #ffd1ff, #a8e6cf);
-            }
-            16.67% {
-                background: linear-gradient(135deg, #a8e6cf, #dcedc1);
-            }
-            33.34% {
-                background: linear-gradient(135deg, #dcedc1, #ffd3b6);
-            }
-            50% {
-                background: linear-gradient(135deg, #ffd3b6, #ffaaa5);
-            }
-            66.67% {
-                background: linear-gradient(135deg, #ffaaa5, #a8d1ff);
-            }
-            83.34% {
-                background: linear-gradient(135deg, #a8d1ff, #a8e6cf);
-            }
-            100% {
-                background: linear-gradient(135deg, #a8e6cf, #ffd1ff);
-            }
-        }
+    #scrollDown {
+      position: absolute;
+      border: 2px solid white;
+      border-radius: 10px;
+      width: 15px;
+      height: 45px;
+      padding: 2px 0px;
+      bottom: 3vh;
+      margin-left: 50%;
+      transform: translateX(-50%);
+      animation: scrollAnimation 1s infinite alternate;
+    }
 
-        #header-container {
-            color: white;
-            font-size: 2.6em;
-            text-align: center;
-            margin: 0;
-        }
+    #scrollDown #rond {
+      height: 11px;
+      width: 11px;
+      border-radius: 50%;
+      background-color: white;
+      margin: 0 auto;
+      animation: anim1 1.5s infinite;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 1rem;
-            margin: 0;
-            background-color: #1f2020;
-            color: #F9F6EF;
-        }
-
-        section {
-            color: #F9F6EF;
-            margin: 100px;
-            padding: 20px;
-            border: 1px solid #ccc;
-        }
-
-      h1, h2 {
-            color: #F9F6EF;
-      }
-      
-     #yeh
-      {
-         border-radius: 25px;
-          position: relative;
-          background: #1f2020;
-          color: #fff;
-      }
-      
-      #yeh:before, #yeh:after {
-        border-radius: 25px;
-        z-index: -1;
-        content: '';
-        position: absolute;
-        width: calc(100% + 6px);
-        height: calc(100% + 6px);
-        top: -3px;
-        left: -3px;
-        background: linear-gradient(45deg, #87CEEB, #87CEEB, #ADD8E6,
-                    #B0E0E6,#00BFFF,#1E90FF,#4682B4,#0000CD,#00008B, #191970);
-        background-size: 300%;
-        animation: shadow 20s ease-in-out infinite;
-      }
-      #yeh:after {
-        filter: blur(10px);
-      }
-      @keyframes shadow { 
-          0% {
-              background-position: 0 0;
-            }
-            5% {
-              background-position: 20% 20%;
-            }
-            10% {
-              background-position: 40% 40%;
-            }
-            20% {
-              background-position: 60% 60%;
-            }
-            30% {
-              background-position: 80% 80%;
-            }
-            40% {
-              background-position: 100% 100%;
-            }
-            50% {
-              background-position: 120% 120%;
-            }
-            60% {
-              background-position: 140% 140%;
-            }
-            70% {
-              background-position: 160% 160%;
-            }
-            80% {
-              background-position: 180% 180%;
-            }
-            90% {
-              background-position: 200% 200%;
-            }
-            100% {
-              background-position: 220%  220%;
-            }
-      }
-        .navbar {
-            overflow: hidden;
-            background-color: #333;
-            color: white !important;
-            position: fixed;
-            z-index: 1000;
-            width: 100%;
-        }
-        .navbar a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-        }
-        
-        .navbar p{
-            float: right;
-            color: white;
-            padding-right: 14px;
-        }
-
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-
-        #demo, #team, #workshop{
-         padding-top: 60px;
+    @keyframes anim1 {
+      0% {
+        margin-top: 0px;
+        opacity: 0;
       }
 
-        .image-container {
-          border: 10px solid #fff;
-          border-radius: 20px;
-          box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
+      100% {
+        margin-top: 33px;
+        opacity: 1;
+      }
+    }
 
-        img {
-          display: block;
-          width: 100%;
-          height: auto;
-          border-radius: 10px;
-          filter: grayscale(20%) brightness(90%);
-        }
-      
-    </style>
+    @keyframes gradientAnimation {
+      0% {
+        background: linear-gradient(135deg, #ffd1ff, #a8e6cf);
+      }
+
+      16.67% {
+        background: linear-gradient(135deg, #a8e6cf, #dcedc1);
+      }
+
+      33.34% {
+        background: linear-gradient(135deg, #dcedc1, #ffd3b6);
+      }
+
+      50% {
+        background: linear-gradient(135deg, #ffd3b6, #ffaaa5);
+      }
+
+      66.67% {
+        background: linear-gradient(135deg, #ffaaa5, #a8d1ff);
+      }
+
+      83.34% {
+        background: linear-gradient(135deg, #a8d1ff, #a8e6cf);
+      }
+
+      100% {
+        background: linear-gradient(135deg, #a8e6cf, #ffd1ff);
+      }
+    }
+
+    #header-container {
+      color: white;
+      font-size: 2.6em;
+      text-align: center;
+      margin: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 1rem;
+      margin: 0;
+      background-color: #1f2020;
+      color: #F9F6EF;
+    }
+
+    section {
+      color: #F9F6EF;
+      margin: 100px;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+
+    h1,
+    h2 {
+      color: #F9F6EF;
+    }
+
+    #yeh {
+      border-radius: 25px;
+      position: relative;
+      background: #1f2020;
+      color: #fff;
+    }
+
+    #yeh:before,
+    #yeh:after {
+      border-radius: 25px;
+      z-index: -1;
+      content: '';
+      position: absolute;
+      width: calc(100% + 6px);
+      height: calc(100% + 6px);
+      top: -3px;
+      left: -3px;
+      background: linear-gradient(45deg, #87CEEB, #87CEEB, #ADD8E6,
+          #B0E0E6, #00BFFF, #1E90FF, #4682B4, #0000CD, #00008B, #191970);
+      background-size: 300%;
+      animation: shadow 20s ease-in-out infinite;
+    }
+
+    #yeh:after {
+      filter: blur(10px);
+    }
+
+    @keyframes shadow {
+      0% {
+        background-position: 0 0;
+      }
+
+      5% {
+        background-position: 20% 20%;
+      }
+
+      10% {
+        background-position: 40% 40%;
+      }
+
+      20% {
+        background-position: 60% 60%;
+      }
+
+      30% {
+        background-position: 80% 80%;
+      }
+
+      40% {
+        background-position: 100% 100%;
+      }
+
+      50% {
+        background-position: 120% 120%;
+      }
+
+      60% {
+        background-position: 140% 140%;
+      }
+
+      70% {
+        background-position: 160% 160%;
+      }
+
+      80% {
+        background-position: 180% 180%;
+      }
+
+      90% {
+        background-position: 200% 200%;
+      }
+
+      100% {
+        background-position: 220% 220%;
+      }
+    }
+
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+      color: white !important;
+      position: fixed;
+      z-index: 1000;
+      width: 100%;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    .navbar p {
+      float: right;
+      color: white;
+      padding-right: 14px;
+    }
+
+    .navbar a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    #demo,
+    #team,
+    #workshop {
+      padding-top: 60px;
+    }
+
+    .image-container {
+      border: 10px solid #fff;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      filter: grayscale(20%) brightness(90%);
+    }
+
+    #team {
+      box-sizing: border-box;
+      font-size: 10px;
+      color: black;
+      border-radius: 50%;
+    }
+
+    #team1,
+    #team2,
+    #team3 {
+      text-decoration: none;
+      color: black;
+    }
+
+    #section-team {
+      padding: 3rem 0;
+      background-color: #fff;
+      color: black;
+      border-radius: 50px;
+    }
+
+    .heading {
+      text-transform: uppercase;
+      font-size: 3.5rem;
+      letter-spacing: 3px;
+      margin-right: 3px;
+      margin-bottom: 5rem;
+      text-align: center;
+      position: relative;
+      color: #333;
+    }
+
+    .heading::after {
+      content: "";
+      width: 10rem;
+      height: .8rem;
+      background-color: #45e19f;
+      position: absolute;
+      bottom: -2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2rem;
+    }
+
+    .card-wrapper {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      flex-direction: column;
+    }
+
+    .card h1 {
+      color: black;
+    }
+
+    .card {
+      width: 36rem;
+      background-color: #ebeef8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem 0;
+      box-shadow: .5rem .5rem 3rem rgba(0, 0, 0, .2);
+    }
+
+    .card .card-img {
+      width: 100%;
+      height: 26rem;
+      object-fit: cover;
+      clip-path: polygon(0 0, 100% 0, 100% 78%, 0% 100%);
+    }
+
+    .profile-img {
+      width: 15rem;
+      height: 15rem;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-top: -11rem;
+      z-index: 100;
+      border: 1rem solid #ebeef8;
+    }
+
+    .card h1 {
+      font-size: 2.5rem;
+      color: #333;
+      margin: 1.5rem 0;
+    }
+
+    .job-title {
+      color: #777;
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    .about {
+      font-size: 1rem;
+      margin: .5rem 0;
+      text-align: center;
+      color: #333;
+    }
+
+    @media screen and (min-width: 700px) {
+      .card-wrapper {
+        flex-direction: row;
+        flew-wrap: wrap;
+        justify-content: center;
+        align-item: center;
+      }
+
+      .card {
+        margin: 2rem;
+        transition: transform .5s;
+      }
+    }
+
+    .card::hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
+
 <body>
-       <div class="navbar">
-          <a href="#home" class="tab-link" onclick="openTab(event, 'home')">Home</a>
-          <a href="#demo" class="tab-link" onclick="openTab(event, 'demo')">Demo</a>
-          <a href="#workshop" class="tab-link" onclick="openTab(event, 'workshop')">Workshop</a>
-          <a href="#team" class="tab-link" onclick="openTab(event, 'team')">Team</a>
-          <p>ECE 196 Spring 2024</p>
-       </div>
-  
-     <div id="home" class="tab-content active">
-        <section id="title-container">
-            <h1> Tritone</h1>
-            <div id="scrollDown">
-              <div id="rond"></div>
-            </div> 
-       </section>
-  
+  <div class="navbar">
+    <a href="#home" class="tab-link" onclick="openTab(event, 'home')">Home</a>
+    <a href="#demo" class="tab-link" onclick="openTab(event, 'demo')">Demo</a>
+    <a href="#workshop" class="tab-link" onclick="openTab(event, 'workshop')">Workshop</a>
+    <a href="#team" class="tab-link" onclick="openTab(event, 'team')">Team</a>
+    <p>ECE 196 Spring 2024</p>
+  </div>
+
+  <div id="home" class="tab-content active">
+    <section id="title-container">
+      <h1> Tritone</h1>
+      <div id="scrollDown">
+        <div id="rond"></div>
+      </div>
+    </section>
+
     <header id="header-container">
-            <h1 class="ECE196">ECE 196: Audio To Color Array Conversion</h1>
-            <p class="Names">James Han, Uriberto Lopez, Alexis Pascual</p>
+      <h1 class="ECE196">ECE 196: Audio To Color Array Conversion</h1>
+      <p class="Names">James Han, Uriberto Lopez, Alexis Pascual</p>
     </header>
-  
+
     <section id="yeh">
       <h2>Problem Definition</h2>
       <p>Concerts only using auditory information aren’t accessible to the hearing impaired. Relying on an interpreter or feeling the vibrations through the ground becomes impossible for some settings.
-  </p>
-  </section>
+      </p>
+    </section>
 
-  <section id="yeh">
+    <section id="yeh">
       <h2>System Diagram</h2>
       <p>Our System Diagram begins by receiving audio input from the various microphones throughout the device and
         sends it to the teensy audio shield. The audio shield process these signals and turns them from analog to digital for
         the Teensy 3.6 board to process. Here, the signal is recorded in chunks. The data captured by the Teensy is given to the ESP32 where a machine leargning algorithm whill be applied to the data collected. The machine learning model will map the incoming frequency data to displaya color. </p>
       <img src="images/System_Pic.png" alt="Pretty Image">
-  </section>
-  
-     <section id="yeh">
-        <h2>Hypothesis</h2>
-        <p></p>
     </section>
-  
+
+    <section id="yeh">
+      <h2>Hypothesis</h2>
+      <p></p>
+    </section>
+
     <section id="yeh">
       <h2>Timeline</h2>
       <p></p>
     </section>
-  
-  
+
     <section id="yeh">
-        <h2>Enclosure</h2>
-        <p></p>
-    </section>
-  
-    <section id="yeh">
-        <h2>Final Product</h2>
-        <p></p>
-    </section>
-  
-      <section id="yeh">
-        <h2></h2>
-        <p></p>
+      <h2>Enclosure</h2>
+      <p></p>
     </section>
 
-   
+    <section id="yeh">
+      <h2>Final Product</h2>
+      <p></p>
+    </section>
+
   </div>
-  
-    <div id="demo" class="tab-content">
-        <h1>Demos</h1>
-        <p>This is the demo page.</p>
-        <p>Video demo here</p>
-        <p>presentation slide deck here</p>
 
-    </div>
-    <div id="workshop" class="tab-content">
-        <h1>How to recreate</h1>
-        <p>Here we will put how to reccreate our project.</p>
-        <p>4+ resources here</p>
-    </div>
+  <div id="demo" class="tab-content">
+    <h1>Demos</h1>
+    <p>This is the demo page.</p>
+    <p>Video demo here</p>
+    <p>presentation slide deck here</p>
 
-    <div id="team" class="tab-content">
-        <h1>Our team</h1>
-        <p>This is the team page.</p>
-    </div>
+  </div>
+  <div id="workshop" class="tab-content">
+    <h1>How to recreate</h1>
+    <p>Here we will put how to reccreate our project.</p>
+    <p>4+ resources here</p>
+  </div>
 
-    <script>
-
-      $(window).scroll(function () {
-              var scrollTop = $(window).scrollTop();
-              var fadeStart = $('#title-container').height() * 0.5; // Start fading when 50% of the title container is scrolled
-              var fadeEnd = $('#title-container').height(); // Fully fade in by the end of the title container
-
-              if (scrollTop >= fadeStart) {
-                  var opacity = (scrollTop - fadeStart) / (fadeEnd - fadeStart);
-                  $('#header-container').css('opacity', opacity);
-              } else {
-                  $('#header-container').css('opacity', 0);
-              }
-          });
+  <div id="team" class="tab-content">
+    <section id="section-team">
+      <div class="container">
+        <h1 class="heading">Meet The Team</h1>
+        <div class="card-wrapper">
+          <div class="card">
+            <img src="images/img-primary-Geisel-UCSanDiego-ErikJepsen-090922.jpg" alt="card background" class="card-img">
+            <img src="" alt="profile image" class="profile-img">
+            <h1>James Han</h1>
+            <p class="job-title">Software Engineer</p>
+            <p class="about">
+              James Han is a 3rd year Computer Science student.
+            </p>
+          </div>
 
 
-      function openTab(evt, tabName) {
-                  var i, tabcontent, tablinks;
-                  tabcontent = document.getElementsByClassName("tab-content");
-                  for (i = 0; i < tabcontent.length; i++) {
-                      tabcontent[i].style.display = "none";
-                      tabcontent[i].classList.remove("active");
-                  }
-                  tablinks = document.getElementsByClassName("tab-link");
-                  for (i = 0; i < tablinks.length; i++) {
-                      tablinks[i].className = tablinks[i].className.replace(" active", "");
-                  }
-                  document.getElementById(tabName).style.display = "block";
-                  document.getElementById(tabName).classList.add("active");
-                  evt.currentTarget.className += " active";
+          <div class="card">
+            <img src="images/img-primary-Geisel-UCSanDiego-ErikJepsen-090922.jpg" alt="card background" class="card-img">
+            <img src="" alt="profile image" class="profile-img">
+            <h1>Alexis Pascual</h1>
+            <p class="job-title">Electrical Engineer</p>
+            <p class="about">
+              Alexis Pascual is a 4th year Electrical Engineer student.
+            </p>
+          </div>
+
+          <div class="card">
+            <img src="images/img-primary-Geisel-UCSanDiego-ErikJepsen-090922.jpg" alt="card background" class="card-img">
+            <img src="" alt="profile image" class="profile-img">
+            <h1>Uriberto Lopez</h1>
+            <p class="job-title">Electrical Engineer</p>
+            <p class="about">
+              Uriberto Lopez is a 4th year Electrical Engineer student.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    $(window).scroll(function() {
+      var scrollTop = $(window).scrollTop();
+      var fadeStart = $('#title-container').height() * 0.5; // Start fading when 50% of the title container is scrolled
+      var fadeEnd = $('#title-container').height(); // Fully fade in by the end of the title container
+      if (scrollTop >= fadeStart) {
+        var opacity = (scrollTop - fadeStart) / (fadeEnd - fadeStart);
+        $('#header-container').css('opacity', opacity);
+      } else {
+        $('#header-container').css('opacity', 0);
       }
+    });
+
+    function openTab(evt, tabName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+        tabcontent[i].classList.remove("active");
+      }
+      tablinks = document.getElementsByClassName("tab-link");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(tabName).style.display = "block";
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.className += " active";
+    }
   </script>
 
 </body>
+
 </html>
