@@ -252,6 +252,93 @@
       filter: grayscale(20%) brightness(90%);
     }
 
+    article > img{
+        animation: fade-in linear;
+        animation-timeline: view();
+        animation: cover;
+    }
+
+    @keyframes fade-in {
+        from {scale: .8; opacity: 0;}
+        to {scale: 1; opacity: 1;}
+    }
+
+    
+    .week_4 {
+      display: block;
+      border-radius: 10px;
+      filter: grayscale(20%) brightness(90%);
+      width: 20%;
+      height: 20%;
+    }
+
+    .final-product {
+      display: block;
+      border-radius: 10px;
+      filter: grayscale(20%) brightness(90%);
+      width: 30%;
+      height: 30%;
+      align-items: center;
+    }
+
+
+    .pcb{
+      display: block;
+      border-radius: 10px;
+      filter: grayscale(20%) brightness(90%);
+      width: 40%;
+      height: 40%;
+      align-items: center;
+    }
+
+    
+
+    #wrapper-time {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      flex-direction: column;
+    }
+
+    #Week {
+      width: 75rem;
+      background-color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem 0;
+      box-shadow: .5rem .5rem 3rem rgba(0, 0, 0, .2);
+      padding: 2rem 0;
+      color: black;
+      border-radius: 30px;
+    }
+
+    #Week:hover {
+      transform: scale(1.04);
+    }
+
+    #Week p {
+      color: white;
+      font-size: 1rem;
+      margin: .7rem .7rem;
+      text-align: center;
+      padding-bottom: 20px;
+    }
+
+    /* @media screen and (min-width: 700px) {
+      #wrapper-time {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #Week {
+        margin: 2rem;
+        transition: transform .5s;
+      }
+    } */
+
     #team {
       box-sizing: border-box;
       font-size: 10px;
@@ -411,12 +498,64 @@
 
     <section id="yeh">
       <h2>Hypothesis</h2>
-      <p></p>
+      <h3>Research Plan 1:</h3>
+      <p>Have hearing impaired people listen to a song with a video of people performing in front of green screen.</p>
+      <h3>Research Plan 2:</h3>
+      <p>Have someone wear earplugs/headphones and try to guess the genre of the song based on the LED projection. </p>
     </section>
 
     <section id="yeh">
-      <h2>Timeline</h2>
-      <p></p>
+      <div id="timeline">
+        <h2>Timeline</h2>
+        <div id="wrapper-time">
+          <div id="Week">
+            <h1>Week 4</h1>
+            <p>In week 4, we began finalizing our idea and gathering items to execute this project. Around this time, we experiment with the Teensy audio shield and Teensy 3.6 board capturing singals from a microphone. These signals were captured in real time and displayed the frequency and amplitude.</p>
+            <img src="images/Week4_diagram.png" alt="Pretty Image" class="week_4">
+          </div>
+          <div id="Week">
+            <h1>Week 5</h1>
+            <p>In week 5, we design the pcb that we would use for our project. In more detail, we designed an Audio Gain Control board that would apmlify signals distant so that they could be recieved better. The process to design this was hugely inspired by DigiKeys design. The board was designed in KiCad and used the various libraries in it. In this week, we also ordered our materials we needed to complete this project. So, instead of building our own RGB Matrix LED board, we ordered one.</p>
+            <img src="images/schem.png" alt="Pretty Image" class="pcb">
+            <img src="images/layout.png" alt="Pretty Image" class="pcb"> 
+            <img src="" alt="Pretty Image">
+            <img src="" alt="Pretty Image">
+          </div>
+          <div id="Week">
+            <h1>Week 6</h1>
+            <p>During Week 6, we received our RGB Matrix LED board from Adafruit and began to play around with it. James and Alexis were able to display a simple spectogram from the signals being recorded. </p>
+            <img src="" alt="Pretty Image">
+            <img src="" alt="Pretty Image">
+            <img src="" alt="Pretty Image">
+          </div>
+          <div id="Week">
+            <h1>Week 7</h1>
+            <p>In this week.</p>
+            <img src="" alt="Pretty Image">
+            <img src="" alt="Pretty Image">
+            <img src="" alt="Pretty Image">
+          </div>
+          <div id="Week">
+            <h1>Week 8</h1>
+            <p>In this week.</p>
+            <img src="" alt="Pretty Image">
+            <img src="" alt="Pretty Image">
+            <img src="" alt="Pretty Image">
+          </div>
+          <div id="Week">
+            <h1>Week 9</h1>
+            <p>In this week.</p>
+            <img src="" alt="Pretty Image">
+            <img src="" alt="Pretty Image">
+            <img src="" alt="Pretty Image">
+          </div>
+          <div id="Week">
+            <h1>Week 10 </h1>
+            <p>In week 10, the concluding week, we started off by presenting our final product to the class and instructors. Other than watching and listening to other groups, we worked on completeing our project website. </p>
+            <img src="" alt="Pretty Image">
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="yeh">
@@ -426,18 +565,20 @@
 
     <section id="yeh">
       <h2>Final Product</h2>
-      <p></p>
+      <img src="images/Enclosure_front.jpg" alt="Pretty Image" class="final-product">
+      <img src="images/Enclosure_back.jpg" alt="Pretty Image" class="final-product">
     </section>
-
   </div>
+
 
   <div id="demo" class="tab-content">
     <h1>Demos</h1>
     <p>This is the demo page.</p>
     <p>Video demo here</p>
     <p>presentation slide deck here</p>
-
   </div>
+
+
   <div id="workshop" class="tab-content">
     <h1>How to recreate</h1>
     <p>Here we will put how to reccreate our project.</p>
@@ -451,28 +592,25 @@
         <div class="card-wrapper">
           <div class="card">
             <img src="images/img-primary-Geisel-UCSanDiego-ErikJepsen-090922.jpg" alt="card background" class="card-img">
-            <img src="images/test.png" alt="profile image" class="profile-img">
+            <img src="images/James.png" alt="profile image" class="profile-img">
             <h1>James Han</h1>
             <p class="job-title">Software Engineer</p>
             <p class="about">
               James Han is a 3rd year Computer Science student.
             </p>
           </div>
-
-
           <div class="card">
             <img src="images/img-primary-Geisel-UCSanDiego-ErikJepsen-090922.jpg" alt="card background" class="card-img">
-            <img src="images/test.png" alt="profile image" class="profile-img">
+            <img src="images/Alexis.jpg" alt="profile image" class="profile-img">
             <h1>Alexis Pascual</h1>
             <p class="job-title">Electrical Engineer</p>
             <p class="about">
               Alexis Pascual is a 4th year Electrical Engineer student.
             </p>
           </div>
-
           <div class="card">
             <img src="images/img-primary-Geisel-UCSanDiego-ErikJepsen-090922.jpg" alt="card background" class="card-img">
-            <img src="images/test.png" alt="profile image" class="profile-img">
+            <img src="images/Uri.png" alt="profile image" class="profile-img">
             <h1>Uriberto Lopez</h1>
             <p class="job-title">Electrical Engineer</p>
             <p class="about">
