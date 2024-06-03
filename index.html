@@ -449,6 +449,61 @@
       color: #333;
     }
 
+
+    .workshop-section {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.workshop-section h1 {
+    text-align: center;
+    color: #333333;
+}
+
+.step {
+    margin-top: 30px;
+}
+
+.step h2 {
+    color: #555555;
+}
+
+.step p {
+    font-size: 16px;
+    color: #666666;
+}
+
+.step ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+.step ol {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+.step ol li{
+    font-size: 16px;
+    color: #444444;
+    margin-bottom: 5px;
+}
+
+
+
+.step ul li {
+    font-size: 16px;
+    color: #444444;
+    margin-bottom: 5px;
+}
+.smallimg{
+    width: 200px;
+    height: 225px;
+}
+
     @media screen and (min-width: 700px) {
       .card-wrapper {
         flex-direction: row;
@@ -583,10 +638,66 @@
   </div>
 
 
-  <div id="workshop" class="tab-content">
-    <h1>How to recreate</h1>
-    <p>Here we will put how to reccreate our project.</p>
-    <p>4+ resources here</p>
+  <div id="workshop" class="tab-content" style=>
+    <div class="workshop-section">
+        <h1>Workshop: Building the Project</h1>
+        <div class="step">
+            <h2>Step 1: Gather Materials</h2>
+            <p>For this project, you will need the following materials:</p>
+            <ul>
+                <li>Teensy3.6 and Audioshield</li>
+                <li>ESP32S3 DevKit</li>
+                <li>Female to Male header wires</li>
+                <li>Male to male wires</li>
+                <li>USB-C Wire</li>
+                <li>Micro USB Wire</li>
+                <li>Adafruit 64x64 RGB matrix</li>
+                <li>5V 4A Switching Power Supply</li>
+                <li>DC Power adapter</li>
+            </ul>
+        </div>
+        <div class="step">
+            <h2>Step 2: Wire up the hardware</h2>
+            <p>We used the following wirings:</p>
+            <ul>
+                <li>Format: HUB75E -> ESP GPIO</li>
+                <li>R1_PIN -> 46 </li>
+                <li>G1_PIN -> 45</li>
+                <li>B1_Pin -> 42</li>
+
+                <li>R2_PIN -> 41 </li>
+                <li>G2_PIN -> 40</li>
+                <li>B2_Pin -> 39</li>
+
+                <li>A_PIN -> 38 </li>
+                <li>B_PIN -> 37</li>
+                <li>C_Pin -> 36</li>
+
+                <li>D_PIN -> 35 </li>
+                <li>E_PIN -> 48</li>
+                <li>LAT_Pin -> 34</li>
+                <li>OE_PIN -> 33</li>
+                <li>CLK_PIN -> 47</li>
+            </ul>
+            <img src="images/hub74.png" alt="Hub 75E Pinout" class="smallimg">
+            <p>Then, connect Teensy 3.3V to ESP32 3.3V and make sure to connect all grounds.</p>
+            <p>Connect Teensy pin 0 to pin 17 (TX) on ESP and Teensy pin 1 to pin 18 on ESP(RX). This is to setup UART Communication.</p>
+            <p>Connect the power to the RGB Matrix.</p>
+            <p> Connect a microphone's output to ESP32 Pin 1 and connect ground and power togther.</p>
+        </div>
+        <div class="step">
+            <h2>Step 3: Code up the software</h2>
+            <ol>
+              <li>We used Adafruit's Protomatter library to program the RGB matrix and PyTorch to train the Feed forward network.</li>
+                <li>After acquiring data and training a small neural network, export the network parameters and the scaling parameters for normalization and hard code the forward passes for inferencing on the ESP.</li>
+                <li>We render the spectrogram data on the ESP32 from the direct microhpone input and collect frequency data transmitted over from Teensy.</li>
+                <li>We collect the last 10 dominant frequencies over the last 10 seconds and keep them stored in an array. Then, every second with the new frequency, we use that as an input for our Feed Forward Network inferencing.</li>
+
+            </ol>
+           
+        </div>
+        <!-- Add more steps as needed -->
+    </div>
   </div>
 
   <div id="team" class="tab-content">
@@ -600,7 +711,7 @@
             <h1>James Han</h1>
             <p class="job-title">Software Engineer</p>
             <p class="about">
-              James Han is a 3rd year Computer Science student.
+              James Han is a 3rd year Computer Science student. 
             </p>
           </div>
           <div class="card">
