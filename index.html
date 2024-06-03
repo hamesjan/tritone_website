@@ -111,6 +111,7 @@
       margin: 100px;
       padding: 20px;
       border: 1px solid #ccc;
+
     }
 
     h1,
@@ -196,10 +197,10 @@
     }
 
     .navbar {
+      position: fixed;
       overflow: hidden;
       background-color: #333;
       color: white !important;
-      position: fixed;
       z-index: 1000;
       width: 100%;
     }
@@ -272,15 +273,24 @@
       height: 20%;
     }
 
-    .final-product {
+    .week_9{
       display: block;
       border-radius: 10px;
       filter: grayscale(20%) brightness(90%);
-      width: 30%;
-      height: 30%;
-      align-items: center;
+      width: 20%;
+      height: 20%;
     }
 
+    .demo_imgs{
+      display: block;
+      align-items: center;
+      width: 20%;
+      height: auto;
+      border-radius: 10px;
+      filter: grayscale(20%) brightness(90%);
+      align-items: center;
+      justify-content: center;
+    }
 
     .pcb{
       display: block;
@@ -290,8 +300,6 @@
       height: 40%;
       align-items: center;
     }
-
-    
 
     #wrapper-time {
       display: flex;
@@ -516,9 +524,8 @@
           <div id="Week">
             <h1>Week 5</h1>
             <p>In week 5, we design the pcb that we would use for our project. In more detail, we designed an Audio Gain Control board that would apmlify signals distant so that they could be recieved better. The process to design this was hugely inspired by DigiKeys design. The board was designed in KiCad and used the various libraries in it. In this week, we also ordered our materials we needed to complete this project. So, instead of building our own RGB Matrix LED board, we ordered one.</p>
-            <img src="images/schem.png" alt="Pretty Image" class="pcb">
-            <img src="images/layout.png" alt="Pretty Image" class="pcb"> 
-            <img src="" alt="Pretty Image">
+              <img src="images/schem.png" alt="Pretty Image" class="pcb">
+              <img src="images/layout.png" alt="Pretty Image" class="pcb"> 
             <img src="" alt="Pretty Image">
           </div>
           <div id="Week">
@@ -545,8 +552,8 @@
           <div id="Week">
             <h1>Week 9</h1>
             <p>In this week.</p>
-            <img src="" alt="Pretty Image">
-            <img src="" alt="Pretty Image">
+            <img src="images/enclosure_front.png" alt="Pretty Image" class="week_9">
+            <img src="images/enclosure_back.png" alt="Pretty Image" class="week_9">
             <img src="" alt="Pretty Image">
           </div>
           <div id="Week">
@@ -559,14 +566,11 @@
     </section>
 
     <section id="yeh">
-      <h2>Enclosure</h2>
-      <p></p>
-    </section>
-
-    <section id="yeh">
       <h2>Final Product</h2>
-      <img src="images/Enclosure_front.jpg" alt="Pretty Image" class="final-product">
-      <img src="images/Enclosure_back.jpg" alt="Pretty Image" class="final-product">
+      <div class="demo_imgs">
+        <img src="images/Enclosure_front.jpg" alt="Pretty Image" class="final-product">
+        <img src="images/Enclosure_back.jpg" alt="Pretty Image" class="final-product">
+      </div>
     </section>
   </div>
 
