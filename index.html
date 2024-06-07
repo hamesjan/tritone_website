@@ -281,7 +281,19 @@
       height: 20%;
     }
 
+    .final-product-section {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .final-product {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
     .demo_imgs{
+      position: relative;
       display: block;
       align-items: center;
       width: 20%;
@@ -298,6 +310,32 @@
       filter: grayscale(20%) brightness(90%);
       width: 40%;
       height: 40%;
+      align-items: center;
+    }
+
+    .week6{
+      display: block;
+      border-radius: 10px;
+      filter: grayscale(20%) brightness(90%);
+      width: 40%;
+      height: 40%;
+      align-items: center;
+    }
+    .week7{
+      display: block;
+      border-radius: 10px;
+      filter: grayscale(20%) brightness(90%);
+      width: 40%;
+      height: 40%;
+      align-items: center;
+    }
+    .week8{
+
+      display: flex;
+      border-radius: 10px;
+      filter: grayscale(20%) brightness(90%);
+      width: 20%;
+      height: 20%;
       align-items: center;
     }
 
@@ -346,6 +384,71 @@
         transition: transform .5s;
       }
     } */
+
+
+    #demo{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      height: 40vh; /* Optional: Keep full height to vertically center */
+    }
+
+    #demo h1{
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin-bottom: 20px;
+    }
+
+
+
+    .poster-container {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            padding-bottom: 50px;
+    }
+    .poster-container iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+    }
+
+    .slides-container {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            padding-bottom: 50px;
+    }
+    .slides-container iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            
+    }
+
+    .youtube-link-container {
+            text-align: center; /* Centers the link horizontally */
+        }
+
+  .youtube-link {
+          color: white;
+          text-decoration: none;
+          font-weight: bold;
+          padding-bottom: 40px;
+      }
+
+    .youtube-link:hover{
+        color: lightseagreen;
+        text-decoration: underline;
+
+    }
 
     #team {
       box-sizing: border-box;
@@ -451,12 +554,13 @@
 
 
     .workshop-section {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    } 
 
 .workshop-section h1 {
     text-align: center;
@@ -547,7 +651,8 @@
 
     <section id="yeh">
       <h2>Problem Definition</h2>
-      <p>Concerts only using auditory information aren’t accessible to the hearing impaired. Relying on an interpreter or feeling the vibrations through the ground becomes impossible for some settings.
+      <p>Concerts only using auditory information aren’t accessible to the hearing impaired. Relying on an interpreter
+         or feeling the vibrations through the ground becomes impossible for some settings.
       </p>
     </section>
 
@@ -555,8 +660,10 @@
       <h2>System Diagram</h2>
       <p>Our System Diagram begins by receiving audio input from the various microphones throughout the device and
         sends it to the teensy audio shield. The audio shield process these signals and turns them from analog to digital for
-        the Teensy 3.6 board to process. Here, the signal is recorded in chunks. The data captured by the Teensy is given to the ESP32 where a machine leargning algorithm whill be applied to the data collected. The machine learning model will map the incoming frequency data to displaya color. </p>
-      <img src="images/System_Pic.png" alt="Pretty Image">
+        the Teensy 3.6 board to process. Here, the signal is recorded in chunks. The data captured by the Teensy is given to the ESP32 
+        where a machine leargning algorithm whill be applied to the data collected. The machine learning model will map the incoming 
+        frequency data to display color. </p>
+      <img src="images/system_diagram_update.png" alt="Pretty Image">
     </section>
 
     <section id="yeh">
@@ -573,48 +680,59 @@
         <div id="wrapper-time">
           <div id="Week">
             <h1>Week 4</h1>
-            <p>In week 4, we began finalizing our idea and gathering items to execute this project. Around this time, we experiment with the Teensy audio shield and Teensy 3.6 board capturing singals from a microphone. These signals were captured in real time and displayed the frequency and amplitude.</p>
+            <p>In week 4, we began finalizing our idea and gathering items to execute this project. 
+              Around this time, we experiment with the Teensy audio shield and Teensy 3.6 board capturing singals from a microphone. 
+              These signals were captured in real time and displayed the frequency and amplitude.</p>
             <img src="images/Week4_diagram.png" alt="Pretty Image" class="week_4">
           </div>
           <div id="Week">
             <h1>Week 5</h1>
-            <p>In week 5, we design the pcb that we would use for our project. In more detail, we designed an Audio Gain Control board that would apmlify signals distant so that they could be recieved better. The process to design this was hugely inspired by DigiKeys design. The board was designed in KiCad and used the various libraries in it. In this week, we also ordered our materials we needed to complete this project. So, instead of building our own RGB Matrix LED board, we ordered one.</p>
+            <p>In week 5, we design the pcb that we would use for our project. 
+              In more detail, we designed an Audio Gain Control board that would amplify distant signals so that they could be recieved better. 
+              The process to design this was hugely inspired by DigiKeys design. The board was designed in KiCad and used the various libraries in it. 
+              In this week, we also ordered our materials we needed to complete this project. So, instead of building our own RGB Matrix LED board, we ordered one.</p>
               <img src="images/schem.png" alt="Pretty Image" class="pcb">
               <img src="images/layout.png" alt="Pretty Image" class="pcb"> 
-            <img src="" alt="Pretty Image">
           </div>
           <div id="Week">
             <h1>Week 6</h1>
-            <p>During Week 6, we received our RGB Matrix LED board from Adafruit and began to play around with it. James and Alexis were able to display a simple spectogram from the signals being recorded. </p>
-            <img src="" alt="Pretty Image">
-            <img src="" alt="Pretty Image">
-            <img src="" alt="Pretty Image">
+            <p>During Week 6, we received our RGB Matrix LED board from Adafruit and began to play around with it. 
+              James and Alexis were able to display a simple spectogram from the signals being recorded. The images below
+            show the code from the initial attempt to record these signals and also the display demonstrating the result.</p>
+            <img src="images/code_week_6.png" alt="Pretty Image" class="week6">
+            <iframe src="video/demo_week6_vid.mp4" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
           </div>
           <div id="Week">
             <h1>Week 7</h1>
-            <p>In this week.</p>
-            <img src="" alt="Pretty Image">
-            <img src="" alt="Pretty Image">
-            <img src="" alt="Pretty Image">
+            <p>After debating whether or not to use the ESP32 in conjuction with the Teensy boards, James began to program the code for 
+                real time frequency detection. His goal was to integrate the ESP32 with the Teensy board to alleviate the workload of the 
+                Teensy board. Also during Week 7 we began to design the initial enclosure. Our initial idea was to make the stand more dynamic. 
+              This meant that we would use a servo that could move the upper part of the stand. </p>
+            <img src="images/ESP32_code.png" alt="Pretty Image" class="week7">
           </div>
           <div id="Week">
             <h1>Week 8</h1>
-            <p>In this week.</p>
-            <img src="" alt="Pretty Image">
-            <img src="" alt="Pretty Image">
-            <img src="" alt="Pretty Image">
+            <p>In Week 8, the team began to 3D print the enclosure designed by Uri at Envision. 
+              The initial prototype included a servo module that would rotate and listen its surroundings for music. So, the parts for 
+              this first protoype were printed. Also, we received our pcb but because the parts for our pcb didn't come in time
+              we decided to instead use the one connected to the Teensy Audio Shield and another one directly conncted to the Teensy board.</p>
+            <img src="images/all_boards.png" alt="Pretty Image" class="week8">
+            <img src="images/initial_proto.png" alt="Pretty Image" class="week8">
+            <img src="images/initial_proto_print.png" alt="Pretty Image" class="week8">
           </div>
           <div id="Week">
             <h1>Week 9</h1>
-            <p>In this week.</p>
+            <p>Week 9 was the week when we made edits to the initial enclosure design. 
+              Comparing to the original, many apects of it were removed to make a feasable product. 
+              The CAD designs also had to be edited because of mismeasurements; for example, we 3D printed a new display case because the we had to account 
+              for the wiring of the RGB display and another edit was the electronics box which had to be made taller to house the wiring connecting the boards.</p>
             <img src="images/enclosure_front.png" alt="Pretty Image" class="week_9">
             <img src="images/enclosure_back.png" alt="Pretty Image" class="week_9">
-            <img src="" alt="Pretty Image">
           </div>
           <div id="Week">
             <h1>Week 10 </h1>
-            <p>In week 10, the concluding week, we started off by presenting our final product to the class and instructors. Other than watching and listening to other groups, we worked on completeing our project website. </p>
-            <img src="" alt="Pretty Image">
+            <p>In week 10, the concluding week, we started off by presenting our final product to the class and instructors. 
+              Other than watching and listening to other groups, we worked on completeing our project website. </p>
           </div>
         </div>
       </div>
@@ -623,18 +741,28 @@
     <section id="yeh">
       <h2>Final Product</h2>
       <div class="demo_imgs">
-        <img src="images/Enclosure_front.jpg" alt="Pretty Image" class="final-product">
-        <img src="images/Enclosure_back.jpg" alt="Pretty Image" class="final-product">
+        <img src="images/Enclosure_front.jpg" alt="Pretty Image">
+        <img src="images/Enclosure_back.jpg" alt="Pretty Image">
       </div>
     </section>
   </div>
 
 
   <div id="demo" class="tab-content">
-    <h1>Demos</h1>
-    <p>This is the demo page.</p>
-    <p>Video demo here</p>
-    <p>presentation slide deck here</p>
+
+    <h1>Poster</h1>
+    <div class="poster-container">
+      <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQpLRPnRTqsEmKMYVQPAmx4vJVJtrWgJbBCblwykNpL1Qr7O5AAfaZtx6J48FAntxZf1RW3A_KoBS7p/embed?start=false&loop=false&delayms=3000" frameborder="0" width="3456" height="2333" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+    </div>
+    <h1>Presentation Slides</h1>
+    <div class="slides-container">
+      <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQgExmySxoO6yPxaaV-ZXUyB_x6V_l9hkY1mwvMhjPmBwJ2N2feVbVNuJ9A2JzA7AJJY_MAknww9u2K/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+    </div>
+    <h1>Demo Video</h1>
+    <div class="youtube-link-container">
+        <a href="https://www.youtube.com/embed/3uRzH58n3Qw" 
+        target="_blank" class="youtube-link">Click here to watch our video</a>
+    </div>
   </div>
 
 
@@ -711,7 +839,8 @@
             <h1>James Han</h1>
             <p class="job-title">Software Engineer</p>
             <p class="about">
-              James Han is a 3rd year Computer Science student. 
+              James Han is a 3rd year Computer Science student. His contributions were in the machine learning model applied to 
+              the project to display the color array.
             </p>
           </div>
           <div class="card">
@@ -720,7 +849,8 @@
             <h1>Alexis Pascual</h1>
             <p class="job-title">Electrical Engineer</p>
             <p class="about">
-              Alexis Pascual is a 4th year Electrical Engineer student.
+              Alexis Pascual is a 4th year Electrical Engineer student. Alexis contributions were in signal processing and working with the Teensy board 
+              capturing the incoming sounds. 
             </p>
           </div>
           <div class="card">
@@ -729,7 +859,7 @@
             <h1>Uriberto Lopez</h1>
             <p class="job-title">Electrical Engineer</p>
             <p class="about">
-              Uriberto Lopez is a 4th year Electrical Engineer student.
+              Uriberto Lopez is a 4th year Electrical Engineer student. Uris contributions were in desgining the stand in Solidworks and designing the pcb in KiCad.
             </p>
           </div>
         </div>
@@ -767,6 +897,6 @@
     }
   </script>
 
-</body>
+  </body>
 
 </html>
