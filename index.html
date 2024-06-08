@@ -668,8 +668,9 @@
       <p>Our System Diagram begins by receiving audio input from the various microphones throughout the device and
         sends it to the teensy audio shield. The audio shield process these signals and turns them from analog to digital for
         the Teensy 3.6 board to process. Here, the signal is recorded in chunks. The data captured by the Teensy is given to the ESP32 
-        where a machine leargning algorithm whill be applied to the data collected. The machine learning model will map the incoming 
-        frequency data to display color. </p>
+        where a machine learning algorithm will be applied to the data collected. We take 11 inputs; 10 dominant frequencies taken from each
+        seconf for the last 10 seconds and the current dominant frequency and pass it through a two hidden layer, 16 parameter feed forward 
+        network to output 3 values: r,g,b. The model training was accomplished by collecting data by James and self-labeling. </p>
       <img src="images/system_diagram_update.png" alt="Pretty Image">
     </section>
 
